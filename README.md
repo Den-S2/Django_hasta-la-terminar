@@ -7,9 +7,9 @@
 - Finnaltraining
 
     > Work with Bd
-    > Select Abonument.
-    > Select day or month Abonument.
-    > Delete data from modul when abonument end (Testing and writting).
+      Select Abonument.
+      Select day or month Abonument.
+      Delete data from modul when abonument end (Testing and writting).
     
     Example Programm
     
