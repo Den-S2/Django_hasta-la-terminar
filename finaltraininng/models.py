@@ -6,6 +6,15 @@ from django.db import models
 from django.core.validators import MaxValueValidator, MinValueValidator
 # Create your models here.
 
+class User(models.Model):
+    userid = models.PositiveBigIntegerField(unique=True)
+    balance = models.DecimalField(
+        default=0,
+        max_digits=100,
+        decimal_places=2
+    )
+    def __str__(self):
+        return str(self.userid)
 class Training(models.Model):
     Name = models.CharField(
         max_length=100,
@@ -71,18 +80,18 @@ class Abon(models.Model):
     def __str__(self):
         return str(self.Name)
 class Order(models.Model):
-    date = models.DateTimeField()
-    userid = models.PositiveIntegerField()
+    date = models.DateTimeField(auto_now_add=True)
+    userid = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     prodid = models.ForeignKey(Abon, on_delete=models.CASCADE)
     def __str__(self):
-        return str(self.id)
+        return str(self.userid)
 
 class Wallet(models.Model):
-    user_chat_id = models.PositiveBigIntegerField(unique=True)
+    userid = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     balance = models.DecimalField(
         default=0,
         max_digits=100,
         decimal_places=2
     )
     def __str__(self):
-        return str(self.user_chat_id)
+        return str(self.userid)
